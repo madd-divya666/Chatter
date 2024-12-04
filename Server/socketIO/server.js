@@ -8,7 +8,7 @@ const app=express();
 const server =http.createServer(app);
 const io=new Server(server,{
   cors:{
-    origin:"https://chatter-backend-ybhv.onrender.com",
+    origin:"https://chatter-frontend-39k9.onrender.com",
     methods:["GET","POST"],
   
   }
