@@ -18,7 +18,7 @@ export const SocketPtovider = ({ children }) => {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:3000", {
+      const socket = io("https://chatter-backend-ybhv.onrender.com", {
         query: {
           userId: authUser.user._id,
         },
