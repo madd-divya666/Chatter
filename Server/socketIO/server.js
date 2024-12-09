@@ -12,7 +12,14 @@ const io=new Server(server,{
     methods:["GET","POST"],
   
   }
-})
+});
+
+// Add a root route to handle GET requests
+app.get("/", (req, res) => {
+  res.send("Socket.IO server is running!");
+});
+
+
 
 //realTime message code
 export const getReceiverSocketId=(receiverId)=>{
@@ -41,4 +48,12 @@ io.on("connection",(socket)=>{
   })
 });
 
-export{app,io,server}
+export{app,io,server};
+
+
+
+
+
+
+   
+

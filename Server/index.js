@@ -34,4 +34,15 @@ app.use("/api/user",userRoute);
 app.use("/api/message",messageRoute)
 server.listen(PORT,()=>{
   console.log(`Server is listening on the port ${PORT}`)
-})
+});
+
+
+
+
+
+
+
+
+
+
+
