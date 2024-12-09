@@ -1,59 +1,42 @@
-import {Server} from "socket.io";
+import express from "express";
 import http from "http";
-import express from "express"
+import { Server } from "socket.io";
 
+const app = express();
+const server = http.createServer(app);
 
-const app=express();
-
-const server =http.createServer(app);
-const io=new Server(server,{
-  cors:{
-    origin:"https://chatter-frontend-39k9.onrender.com",
-    methods:["GET","POST"],
-  
-  }
+const io = new Server(server, {
+  cors: {
+    origin: "https://chatter-frontend-39k9.onrender.com", // Correct frontend live URL
+    methods: ["GET", "POST"],
+  },
 });
 
-// Add a root route to handle GET requests
+// Root route to handle GET requests
 app.get("/", (req, res) => {
   res.send("Socket.IO server is running!");
 });
 
+const users = {};
 
-
-//realTime message code
-export const getReceiverSocketId=(receiverId)=>{
+// Real-time message code
+export const getReceiverSocketId = (receiverId) => {
   return users[receiverId];
-}
-const users={}
+};
 
-//used to listen events of server side
-io.on("connection",(socket)=>{
-  //console.log("a user connected",socket.id);
-  const userId=socket.handshake.query.userId;
-  if(userId){
-    users[userId]=socket.id;
-    //console.log("hello",users)
+// Listen to events on the server-side
+io.on("connection", (socket) => {
+  const userId = socket.handshake.query.userId;
+  if (userId) {
+    users[userId] = socket.id;
   }
-  //used to send the events to all connected users
-  io.emit("getOnlineUsers",Object.keys(users))
 
-  //used to listen client side events emitted by server side
-  socket.on("disconnect",()=>{
-    //console.log("a user disconnected",socket.id);
+  io.emit("getOnlineUsers", Object.keys(users));
+
+  socket.on("disconnect", () => {
     delete users[userId];
-    io.emit("getOnlineUsers",Object.keys(users))
-
-
-  })
+    io.emit("getOnlineUsers", Object.keys(users));
+  });
 });
 
-export{app,io,server};
-
-
-
-
-
-
-   
-
+export { app, io, server }; // Export to index.js to start the server
