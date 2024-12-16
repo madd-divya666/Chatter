@@ -10,12 +10,15 @@ function useGetAllUsers() {
       setLoading(true);
       try {
         const token = Cookies.get("jwt");
-        const response = await axios.get("/api/user/allUsers", {
-          credentials: "include",
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await axios.get(
+          "https://chatter-backend-ybhv.onrender.com/api/user/allUsers",
+          {
+            credentials: "include",
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setAllUsers(response.data);
         setLoading(false);
       } catch (error) {

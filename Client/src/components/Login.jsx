@@ -19,7 +19,10 @@ function Login() {
       password: data.password,
     };
     axios
-      .post("/api/user/login", userInfo)
+      .post(
+        "https://chatter-backend-ybhv.onrender.com/api/user/login",
+        userInfo
+      )
       .then((response) => {
         if (response.data) {
           // alert("Login done");

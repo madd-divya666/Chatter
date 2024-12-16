@@ -9,7 +9,9 @@ function Logout() {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      const res = await axios.post("/api/user/logout");
+      const res = await axios.post(
+        "https://chatter-backend-ybhv.onrender.com/api/user/logout"
+      );
       localStorage.removeItem("ChatApp");
       Cookies.remove("jwt");
       toast.success("Logout successful");

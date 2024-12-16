@@ -18,7 +18,7 @@ app.use(cookieParser())
 
 
 
-const PORT=process.env.PORT||4004
+const PORT=process.env.PORT||3001
 const URI=process.env.MONGODB_URI
 
 try{

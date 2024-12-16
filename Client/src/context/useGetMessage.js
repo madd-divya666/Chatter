@@ -11,7 +11,7 @@ const useGetMessage=()=> {
       if (selectedConversation && selectedConversation._id) {
         try {
           const res = await axios.get(
-            `/api/message/get/${selectedConversation._id}`
+            `https://chatter-backend-ybhv.onrender.com/api/message/get/${selectedConversation._id}`
           );
           setMessages(res.data);
           setLoading(false);

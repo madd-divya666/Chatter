@@ -13,7 +13,7 @@ const useSendMessage=()=> {
     }
     setLoading(true);
     try {
-      const res=await axios.post(`/api/message/send/${selectedConversation._id}`,{message});
+      const res=await axios.post(`https://chatter-backend-ybhv.onrender.com/api/message/send/${selectedConversation._id}`,{message});
       setMessages([...messages,res.data]);
       setLoading(false)
       
