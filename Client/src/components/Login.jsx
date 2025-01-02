@@ -71,7 +71,7 @@ function Login() {
           </label>
           {errors.email && (
             <span className="text-red-500 text-sm font-semibold">
-              This field is required
+              This field is required.
             </span>
           )}
           {/* password */}
@@ -97,7 +97,7 @@ function Login() {
           </label>
           {errors.password && (
             <span className="text-red-500 text-sm font-semibold">
-              This field is required
+              This field is required.
             </span>
           )}
           {/* text & button */}
